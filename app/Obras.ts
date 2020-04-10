@@ -24,12 +24,11 @@ const ObraSchema = new mongoose.Schema({
 export const Obra = mongoose.model<IObra>("Obra", ObraSchema);
 
 export const CreateObra = async function(nameProveedor:string, name:string, name_autor:string, costo_alquiler:number, id:number, status_obra:Boolean){
-    //Conectar con la base de datos
+   
     await connectMongoDB;
-    //Obtener el proveedor en funcion del nombre
+   
     const prov:any = await getProveedor(nameProveedor);
 
-    //persistencia de nuestro producto
     const p = new Obra();
     p.name = name;
     p.name_autor = name_autor;
